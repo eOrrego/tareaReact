@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Button } from 'react-bootstrap';
+import FormLogin from '../componentes/FormLogin'
+import FormRegister from '../componentes/FormRegister'
 
 const Login = () => {
-  return (
-    <div>login</div>
-  )
+    const [form, setForm] = useState(true);
+
+    return (
+        <>
+            {form ? <FormLogin />
+
+                : <FormRegister />
+            }
+
+            <Button variant="primary" onClick={() => setForm(!form)}>
+                {form ? "Registrar"
+                    : "Login"
+                }
+            </Button>
+        </>
+    )
 }
 
 export default Login
