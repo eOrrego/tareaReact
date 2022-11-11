@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 const FormLogin = () => {
     return (
         <Container className="my-3">
+            <h1>LOGIN</h1>
             <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>E-Mail</Form.Label>
