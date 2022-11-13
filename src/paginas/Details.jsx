@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import axios from 'axios';
 import Card from 'react-bootstrap/Card';
 import { Col, Container, Row } from 'react-bootstrap';
@@ -26,28 +26,26 @@ const Details = () => {
   return (
     <Container className='animate__animated animate__backInUp'>
       <Row className="justify-content-md-center my-4">
-        <Col xs lg="6">
-          <Card className="text-center">
-            <Card.Body>
-              <Card.Img variant="top" src={dato.image} />
-              <Card.Title>{dato.name}</Card.Title>
-              <Card.Text>
-                Genero:
-                {dato.gender}
-              </Card.Text>
-              <Card.Text>
-                Especie:
-                {dato.species}
-              </Card.Text>
-            </Card.Body>
-            <Card.Footer className="text-muted">{dato.status}</Card.Footer>
-          </Card>
-        </Col>
+        {!error &&
+          <Col xs lg="6">
+            <Card className="text-center" border="warning" bg="dark" text="light">
+              <Card.Body>
+                <Card.Img variant="top" src={dato.image} />
+                <Card.Title className="mt-4">{dato.name}</Card.Title>
+                <p><strong>Genero:</strong> {dato.gender}</p>
+                <p><strong>Especie:</strong> {dato.species}</p>
+              </Card.Body>
+              <Card.Footer className="text-muted">{dato.status}</Card.Footer>
+            </Card>
+            <div className="d-grid mt-2">
+              <Link to="/" className="btn btn-outline-warning btn-lg btn-block">
+                  Volver
+              </Link>
+            </div>
+          </Col>
+        }
       </Row>
-      {console.log(error)}
     </Container>
-
-
   )
 }
 
