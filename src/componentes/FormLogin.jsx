@@ -6,7 +6,10 @@ import Row from 'react-bootstrap/Row';
 import * as yup from 'yup';
 import { Formik } from 'formik';
 import { Container } from 'react-bootstrap';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+
+
 
 
 const schema = yup.object().shape({
@@ -16,18 +19,20 @@ const schema = yup.object().shape({
     terms: yup.bool().required().oneOf([true], 'Acepte para continuar'),
 });
 
-const validar = (email, pass) => {
+
+
+const FormLogin = () => {
+    const goTo = useNavigate();
+    const validar = (email, pass) => {
 
     const datosUser = JSON.parse(localStorage.getItem('user'))
 
     if (email === datosUser.email && pass === datosUser.contrasenia) {
         JSON.stringify(localStorage.setItem('userLogued', email));
-        <Navigate to="/home" />
+       // goTo("/Home")
     }
 
 }
-
-const FormLogin = () => {
     return (
         <div className='fluid bg-dark' style={{ width: "100%" }}>
             <Container >
@@ -102,7 +107,19 @@ const FormLogin = () => {
                                                 id="validationFormik0"
                                             />
                                         </Form.Group>
+
+
                                         <Button type="submit" onClick={() => validar(values.username, values.password)}>Ingresar </Button>
+                                        
+
+         
+                                   
+           
+                                        
+                                        
+                                        <Button type='button' className='mt-3' variant="primary" onClick={()=> goTo("/FormRegister") }>
+                                    registrarme
+                                        </Button>
                                     </Row>
                                 </Col>
                                 <Col md='7' className='d-flex justify-content-center'>
