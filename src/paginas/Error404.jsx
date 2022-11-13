@@ -11,7 +11,7 @@ const Error404 = () => {
       </div>
     <h2>LA PAGINA QUE BUSCAS NO SE ENCUENTRA DISPONIBLE</h2>
 
-    <Link to='/' className='btn btn-outline-primary'>Volver a Inicio</Link>
+    <Link to='/' className='btn btn-outline-warning'>Volver a Inicio</Link>
     </div>
     
   )
