@@ -7,6 +7,7 @@ import * as yup from 'yup';
 import { Formik } from 'formik';
 import { Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import './FormLogin.css';
 
 
 
@@ -25,16 +26,16 @@ const FormLogin = () => {
     const goTo = useNavigate();
     const validar = (email, pass) => {
 
-    const datosUser = JSON.parse(localStorage.getItem('user'))
+        const datosUser = JSON.parse(localStorage.getItem('user'))
 
-    if (email === datosUser.email && pass === datosUser.contrasenia) {
-        JSON.stringify(localStorage.setItem('userLogued', email));
-       // goTo("/Home")
+        if (email === datosUser.email && pass === datosUser.contrasenia) {
+            JSON.stringify(localStorage.setItem('userLogued', email));
+            // goTo("/Home")
+        }
+
     }
-
-}
     return (
-        <div className='fluid bg-dark' style={{ width: "100%" }}>
+        <div className='fluid bg-dark pt-5' id='loginDiv'>
             <Container >
                 <Formik
                     validationSchema={schema}
@@ -60,6 +61,7 @@ const FormLogin = () => {
                         <Form noValidate onSubmit={handleSubmit}>
                             <Row className='justify-content-center'>
                                 <Col xs='10' md='5'>
+                                    <h1 className='text-warning'>Login</h1>
                                     <Row className="mb-3">
                                         <Form.Group as={Col} md="12" controlId="validationFormikUsername">
                                             <Form.Label>Correo electronico</Form.Label>
@@ -109,16 +111,16 @@ const FormLogin = () => {
                                         </Form.Group>
 
 
-                                        <Button type="submit" onClick={() => validar(values.username, values.password)}>Ingresar </Button>
-                                        
+                                        <Button type="submit" variant="outline-warning" onClick={() => validar(values.username, values.password)}>Ingresar </Button>
 
-         
-                                   
-           
-                                        
-                                        
-                                        <Button type='button' className='mt-3' variant="primary" onClick={()=> goTo("/FormRegister") }>
-                                    registrarme
+
+
+
+
+
+
+                                        <Button type='button' className='mt-3' variant="outline-warning" onClick={() => goTo("/FormRegister")}>
+                                            Registrarme
                                         </Button>
                                     </Row>
                                 </Col>
