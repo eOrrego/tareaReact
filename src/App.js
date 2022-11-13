@@ -1,8 +1,6 @@
 import { BrowserRouter } from 'react-router-dom'
 import RutasPublicas from './router/RutasPublicas';
 import RutasPrivadas from './router/RutasPrivadas';
-import NavBar from './componentes/NavBar';
-
 
 function App() {
 
@@ -11,7 +9,6 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <NavBar />
         {!isLogged ?
           <RutasPublicas />
           :
