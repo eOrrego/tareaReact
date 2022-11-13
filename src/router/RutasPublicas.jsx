@@ -1,12 +1,14 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
+import FormLogin from '../componentes/FormLogin'
+import FormRegister from '../componentes/FormRegister'
 import Error404 from '../paginas/Error404'
-import Login from '../paginas/Login'
 
 const RutasPublicas = () => {
   return (
     <Routes>
-        <Route path="/" element={<Login /> } />
+        <Route path="/" element={<FormLogin /> } />
+        <Route path="/FormRegister" element={<FormRegister /> } />
         <Route path="*" element={<Error404 /> } />
     </Routes>
   )
