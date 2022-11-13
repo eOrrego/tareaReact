@@ -5,11 +5,20 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import './NavBar.css'
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 function NavBar() {
 
+  const [buscar, setBuscar] = useState([]);
+
   const isLogged = JSON.parse(localStorage.getItem("userLogged"));
 
+  const navigate = useNavigate();
+  const query = (e) => {
+    e.preventDefault();
+    navigate(`/search/${buscar}`);
+  }
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -24,11 +33,15 @@ function NavBar() {
           <Nav className="ms-auto">
 
             {isLogged &&
-            <Stack direction="horizontal" gap={2}>
-              <Form.Control className="ms-auto" placeholder="Personaje..." />
-              <Button variant="outline-warning">Buscar</Button>
-              <Button variant="outline-danger">Reset</Button>
-            </Stack>
+              <Form onSubmit={query}>
+                <Stack direction="horizontal" gap={2}>
+                  <Form.Control className="ms-auto" type="text" placeholder="Personaje..." onChange={(e) => setBuscar(e.target.value)} />
+                  <Button type="submit" variant="outline-warning" >Buscar</Button>
+                  <Link to="/" className="btn btn-outline-danger">
+                    Reset
+                  </Link>
+                </Stack>
+              </Form>
             }
           </Nav>
         </Navbar.Collapse>

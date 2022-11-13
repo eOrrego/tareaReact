@@ -1,5 +1,6 @@
 import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
+import Buscador from '../componentes/Buscador'
 import Details from '../paginas/Details'
 import Error404 from '../paginas/Error404'
 import Home from '../paginas/Home'
@@ -11,6 +12,7 @@ const RutasPrivadas = () => {
       <Route path="/home" element={<Home />} />
       <Route path="*" element={<Error404 />} />
       <Route path="/details/:id" element={<Details />} />
+      <Route path="/search/:query" element={<Buscador />} />
     </Routes>
   )
 }
