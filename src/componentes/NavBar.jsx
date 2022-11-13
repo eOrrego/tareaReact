@@ -14,7 +14,7 @@ function NavBar() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand id="Brand">
+        <Navbar.Brand id="Brand" className='animate__animated animate__flash'>
           <h1>
             RICK AND MORTY
           </h1>
