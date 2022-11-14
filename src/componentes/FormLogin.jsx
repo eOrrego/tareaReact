@@ -31,7 +31,7 @@ const FormLogin = () => {
         if (email === datosUser.correo && pass === datosUser.contrasenia) {
             localStorage.setItem('userLogged', true);
             // goTo("/home");
-            window.location.replace("/home");
+            window.location.replace("/");
         }
 
     }
