@@ -26,11 +26,12 @@ const FormLogin = () => {
     const goTo = useNavigate();
     const validar = (email, pass) => {
 
-        const datosUser = JSON.parse(localStorage.getItem('user'))
+        const datosUser = JSON.parse(localStorage.getItem('users'))
 
-        if (email === datosUser.email && pass === datosUser.contrasenia) {
-            JSON.stringify(localStorage.setItem('userLogued', email));
-            // goTo("/Home")
+        if (email === datosUser.correo && pass === datosUser.contrasenia) {
+            localStorage.setItem('userLogged', true);
+            // goTo("/home");
+            window.location.replace("/home");
         }
 
     }
@@ -119,7 +120,7 @@ const FormLogin = () => {
 
 
 
-                                        <Button type='button' className='mt-3' variant="outline-warning" onClick={() => goTo("/FormRegister")}>
+                                        <Button type='button' className='mt-3' variant="outline-warning" onClick={() => goTo("/register")}>
                                             Registrarme
                                         </Button>
                                     </Row>
