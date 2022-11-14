@@ -1,4 +1,4 @@
-import { yupToFormErrors } from 'formik';
+// import { yupToFormErrors } from 'formik';
 import * as yup from 'yup';
 export const schemaFormRegister = yup.object().shape({
     firstName: yup.string().required('Campo obligatorio'),
@@ -9,7 +9,7 @@ export const schemaFormRegister = yup.object().shape({
     password: yup
         .string()
         .required('Campo obligatorio')
-        .min(8, 'Debe tener minimo 8 caracteres')
+        .min(8, 'Debe tener mínimo 8 caracteres')
         .matches(/[a-zA-Z]/, 'Debe tener minúsculas y mayúsculas'),
     terms: yup.bool().required().oneOf([true], 'Debés aceptar los terminos y condiciones'),
 });

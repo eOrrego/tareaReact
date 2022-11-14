@@ -1,18 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Formik } from 'formik';
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import { schemaFormRegister } from '../utils/ValidateForms';
- 
+import { schemaFormRegister } from '../utils/ValidateForms'; 
+
 const FormRegister = () => {
+    const [users, setUsers] = useState([]);
+
+    
+    const registro = (nombre, apellido, doc, fechanac, correo, contrasenia) => {
+        const user = {
+            nombre,
+            apellido,
+            doc,
+            fechanac,
+            correo,
+            contrasenia
+        };
+
+        setUsers([
+            ...users,
+            user
+        ]);
+
+        localStorage.setItem("users", JSON.stringify(user));
+        window.location.replace("/");
+    }
+
         return (
         <Container className="my-3">
             <h1>REGISTRO</h1>
             <Formik
             validationSchema={schemaFormRegister}
+            
                 initialValues={{
                     firstName: '',
                     lastName: '',
@@ -132,7 +155,7 @@ const FormRegister = () => {
                                 id="validationFormik0"
                             />
                         </Form.Group>
-                        <Button type="submit" disabled={isSubmitting}>Registrarse</Button>
+                         <Button type="submit" disabled={isSubmitting} onClick={()=>registro(values.firstName, values.lastName, values.dni, values.birthday,values.email, values.password)}>Registrarse</Button>
                     </Form>
                 )}
             </Formik>
