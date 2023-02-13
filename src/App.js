@@ -7,7 +7,6 @@ function App() {
   const isLogged = JSON.parse(localStorage.getItem("userLogged"));
 
   return (
-    <>
       <div className="App">
         <BrowserRouter>
           {!isLogged ?
@@ -17,7 +16,6 @@ function App() {
           }
         </BrowserRouter>
       </div>
-    </>
   );
 }
 
