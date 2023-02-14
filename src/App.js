@@ -7,7 +7,7 @@ function App() {
   const isLogged = JSON.parse(localStorage.getItem("userLogged"));
 
   return (
-      <div className="App">
+      <className="App">
         <BrowserRouter>
           {!isLogged ?
             <RutasPublicas />
@@ -15,7 +15,7 @@ function App() {
             <RutasPrivadas />
           }
         </BrowserRouter>
-      </div>
+      </>
   );
 }
 
